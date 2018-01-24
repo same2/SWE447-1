@@ -15,6 +15,7 @@ void main()
      gl_PointSize = 5.0;
      gl_Position = vPosition;
 }
+
 </script>
 <script id = "Cone-fragment-shader" type="x-shader/x-fragment">
 void main()
@@ -22,6 +23,9 @@ void main()
     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
 </script>
+  <script>
+    gl.drawArrays(gl.POINTS, 0, 3);
+  </script>
 </head>
 <body>
   <canvas id="webgl-canvas" width="512" height="512" style="background-color: #008000"></canvas>
