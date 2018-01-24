@@ -1,5 +1,5 @@
 var gl = null;
-
+var cone = null;
 attribute vec4 vPosition;
 
 void main() 
