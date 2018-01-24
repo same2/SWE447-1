@@ -10,8 +10,7 @@
 attribute vec4 vPosition;
 
 void main() 
-{
-     gl.drawArrays(gl.POINTS, 0, 3);
+{   
      gl_PointSize = 5.0;
      gl_Position = vPosition;
 }
