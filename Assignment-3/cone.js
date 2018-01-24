@@ -1,12 +1,8 @@
 var gl = null;
 var cone = null;
+
 attribute vec4 vPosition;
 
-void main() 
-{
-    gl_Position = vPosition;
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-}
 function init() {
     var canvas = document.getElementById( "webgl-canvas" );
 
@@ -18,6 +14,8 @@ function init() {
     }
 
     gl.clearColor( 0.0, 1.0, 0.0, 1.0 );
+    gl_Position = vPosition;
+    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
     cone = new Cone( gl, n );
     cone.render();
 }
