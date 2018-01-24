@@ -8,13 +8,15 @@
   
 <script id="Cone-vertex-shader" type="x-shader/x-vertex">
 attribute vec4 vPosition;
-
-void main() 
-{   
-     gl_PointSize = 5.0;
-     gl_Position = vPosition;
+attribute vec3 vColor;
+varying vec3 fColor;
+void main()
+{
+	gl_PointSize = 5.0;
+	gl_Position = vPosition;
+    fColor = vColor;
+	
 }
-
 </script>
 <script id = "Cone-fragment-shader" type="x-shader/x-fragment">
 void main()
@@ -24,6 +26,6 @@ void main()
 </script>
 </head>
 <body>
-  <canvas id="webgl-canvas" width="512" height="512" style="background-color: #008000"></canvas>
+<canvas id="webgl-canvas" width="512" height="512" style="background-color: #008000"></canvas>
 </body>
 </html>
