@@ -6,9 +6,6 @@
   <script src="../Common/Cone.js"></script>
   <script src="cone.js"></script> 
   
-<script>
-gl.drawArrays(gl.POINTS, 0, 3);
-</script>
 <script id="Cone-vertex-shader" type="x-shader/x-vertex">
 attribute vec4 vPosition;
 void main()
@@ -24,7 +21,6 @@ void main()
     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
 </script>
-
 </head>
 <body>
 <canvas id="webgl-canvas" width="512" height="512" style="background-color: #0000FF"></canvas>
