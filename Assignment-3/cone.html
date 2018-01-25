@@ -6,10 +6,14 @@
   <script src="../Common/Cone.js"></script>
   <script src="cone.js"></script> 
   
+<script>
+gl.drawArrays(gl.POINTS, 0, 3);
+</script>
 <script id="Cone-vertex-shader" type="x-shader/x-vertex">
 attribute vec4 vPosition;
 void main()
 {
+	gl_PointSize = 5.0;
 	gl_Position = vPosition;
 	
 }
@@ -20,13 +24,7 @@ void main()
     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
 </script>
-<script>
-gl.clearColor(0.5, 0.5, 0.5, 0.9);
-gl.enable(gl.DEPTH_TEST);
-gl.clear(gl.COLOR_BUFFER_BIT);
-gl.viewport(0,0,canvas.width,canvas.height);
-gl.drawArrays(gl.POINTS, 0, 3);
-</script>
+
 </head>
 <body>
 <canvas id="webgl-canvas" width="512" height="512" style="background-color: #0000FF"></canvas>
