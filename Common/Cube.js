@@ -18,35 +18,30 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 
     this.positions = { 
         values : new Float32Array([
-	  -0.5, -0.5, 0.5,
-	   0.5, -0.5, 0.5,
-	   0.5, 0.5, 0.5,
-	  -0.5, 0.5, 0.5, 
-	   
-	  -0.5, -0.5, -0.5,
-	  -0.5, 0.5, -0.5,
-	   0.5, 0.5, -0.5,
-           0.5, -0.5, -0.5,
-	  
-	  -0.5, 0.5, -0.5,
-	  -0.5, 0.5, 0.5,
-           0.5, 0.5, 0.5,
-	   0.5, 0.5, -0.5,
-	
-	  -0.5, -0.5, -0.5,
-	   0.5, -0.5, -0.5, 
-	   0.5, -0.5, 0.5, 
-	  -0.5, -0.5, 0.5, 	
-		
-           0.5, -0.5, -0.5,  
-	   0.5, 0.5, -0.5, 
-	   0.5, 0.5, 0.5, 
-	   0.5, -0.5, 0.5,
-		
-	  -0.5, -0.5, -0.5, 
-	  -0.5, -0.5, 0.5, 
-	  -0.5, 0.5, 0.5,   
-	  -0.5, 0.5, -0.5  
+	  -.5, -.5, .5,
+	   .5, -.5, .5,
+	   .5, .5, .5,
+	  -.5, .5, .5, 
+	  -.5, -.5,-.5,
+	  -.5, .5, -.5,
+	   .5, .5, -.5,
+           .5, -.5, -.5,
+	  -.5, .5, -.5,
+	  -.5, .5, .5,
+           .5, .5, .5,
+	   .5, .5, -.5,
+	  -.5, -.5, -.5,
+	   .5, -.5, -.5, 
+	   .5, -.5, .5, 
+	  -.5, -.5, .5, 	
+           .5, -.5, -.5,  
+	   .5, .5, -.5, 
+	   .5, .5, .5, 
+	   .5, -.5, .5,
+	  -.5, -.5, -.5, 
+	  -.5, -.5, .5, 
+	  -.5, .5, .5,   
+	  -.5, .5, -.5  
             ]),
         numComponents : 3
     };
@@ -84,8 +79,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
         ]),
         numComponents : 3 
     };
-	
-	
+		
  this.indices = { 
         values : new Uint16Array([
         0,  2,  1,      0,  3,  2,    
@@ -98,8 +92,6 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     };
     this.indices.count = this.indices.values.length;
 
-    
-    
     this.positions.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
     gl.bufferData( gl.ARRAY_BUFFER, this.positions.values, gl.STATIC_DRAW );
@@ -107,8 +99,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     this.colors.buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, this.colors.buffer);
     gl.bufferData(gl.ARRAY_BUFFER, this.colors.values, gl.STATIC_DRAW);
-   
-	
+   	
     this.indices.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
     gl.bufferData( gl.ELEMENT_ARRAY_BUFFER, this.indices.values, gl.STATIC_DRAW );
