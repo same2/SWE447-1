@@ -11,8 +11,8 @@ function init() {
     alert("Unable to setup WebGL");
     return;
   }
-  gl.clearColor( 0.133, 0.866, 0.811, 1.0 );
-  //gl.clearColor( 0.8, 0.8, 0.8, 1.0 );
+  //gl.clearColor( 0.133, 0.866, 0.811, 1.0 );
+  gl.clearColor( 0.8, 0.8, 0.8, 1.0 );
   gl.enable( gl.DEPTH_TEST );
 
   cube = new Cube();
@@ -28,7 +28,6 @@ function render() {
   cube.MV = rotate( angle, [1, 1, 0] );
 
   cube.render();
-  //mat4.rotate(modelViewMatrix, modelViewMatrix, cubeRotation * .7, [0, 1, 0]);
 
   requestAnimationFrame( render ); // schedule another call to render()
 }
