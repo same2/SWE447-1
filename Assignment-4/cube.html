@@ -11,7 +11,7 @@
 <script src="cube.js"></script>
 
 <script id="Cube-vertex-shader" type="x-shader/x-vertex">
-attribute vec4 vPosition;
+attribute vec4 vPosition; 
 uniform mat4 MV;
 attribute vec3 vColor;
 varying vec3 fColor;
@@ -19,7 +19,7 @@ void main()
 {
     gl_PointSize = 5.0;
     gl_Position = MV * vPosition;
-    fColor = vColor
+    fColor=vColor;
 }
 </script>
 
