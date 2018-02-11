@@ -6,6 +6,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     var vertShdr = vertexShaderId || "Cube-vertex-shader";
     var fragShdr = fragmentShaderId || "Cube-fragment-shader";
 
+
     this.program = initShaders(gl, vertShdr, fragShdr);
 
     if ( this.program < 0 ) {
@@ -17,35 +18,39 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 
     this.positions = { 
         values : new Float32Array([
-            -.5,.5,.5,
-            -.5,.5,-.5,
-             .5,.5,.5,
-             .5,.5,-.5,
+	  -0.5, -0.5, 0.5,
+	   0.5, -0.5, 0.5,
+	   0.5, 0.5, 0.5,
+	  -0.5, 0.5, 0.5, 
+	   
+	  -0.5, -0.5, -0.5,
+	  -0.5, 0.5, -0.5,
+	   0.5, 0.5, -0.5,
+           0.5, -0.5, -0.5,
+	  
+	  -0.5, 0.5, -0.5,
+	  -0.5, 0.5, 0.5,
+           0.5, 0.5, 0.5,
+	   0.5, 0.5, -0.5,
+	
+	  -0.5, -0.5, -0.5,
+	   0.5, -0.5, -0.5, 
+	   0.5, -0.5, 0.5, 
+	  -0.5, -0.5, 0.5, 	
 		
-             .5,-.5,.5,
-             .5,-.5,-.5,
-            -.5,-.5,.5,
-            -.5,-.5,-.5,
-		.5,-.5,.5,
-             .5,-.5,-.5,
-            -.5,-.5,.5,
-            -.5,-.5,-.5,
-		.5,-.5,.5,
-             .5,-.5,-.5,
-            -.5,-.5,.5,
-            -.5,-.5,-.5,
-		.5,-.5,.5,
-             .5,-.5,-.5,
-            -.5,-.5,.5,
-            -.5,-.5,-.5,
-		.5,-.5,.5,
-             .5,-.5,-.5,
-            -.5,-.5,.5,
-            -.5,-.5,-.5
+           0.5, -0.5, -0.5,  
+	   0.5, 0.5, -0.5, 
+	   0.5, 0.5, 0.5, 
+	   0.5, -0.5, 0.5,
+		
+	  -0.5, -0.5, -0.5, 
+	  -0.5, -0.5, 0.5, 
+	  -0.5, 0.5, 0.5,   
+	  -0.5, 0.5, -0.5  
             ]),
         numComponents : 3
     };
-	this.colors = {
+        this.colors = {
         values : new Float32Array([
 	  	0.9,  0.5,  0.2,
    		0.9,  0.3,  0.3,
@@ -79,25 +84,21 @@ function Cube( vertexShaderId, fragmentShaderId ) {
         ]),
         numComponents : 3 
     };
-    
-    this.indices = { 
+	
+	
+ this.indices = { 
         values : new Uint16Array([
-            0,1,2,
-			2,1,3,
-			2,3,4,
-			4,3,5,
-			4,5,6,
-			5,7,6,
-			7,0,6,
-			7,1,0,
-			3,1,7,
-			5,3,7,
-			6,0,2,
-			6,2,4
+        0,  2,  1,      0,  3,  2,    
+    	4,  6,  5,      4,  7,  6,    
+    	8,  10,  9,     8,  11, 10,   
+    	12, 14, 13,     12, 15, 14,   
+    	16, 18, 17,     16, 19, 18,   
+    	20, 22, 21,     20, 23, 22   
         ])
     };
     this.indices.count = this.indices.values.length;
 
+    
     
     this.positions.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
