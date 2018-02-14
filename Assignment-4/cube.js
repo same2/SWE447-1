@@ -11,8 +11,7 @@ function init() {
     alert("Unable to setup WebGL");
     return;
   }
-  //gl.clearColor( 0.133, 0.866, 0.811, 1.0 );
-  gl.clearColor( 0.15, 0.9, 0.8, 1.0 );
+  gl.clearColor( 0.13, 0.86, 0.81, 1.0 );
   gl.enable( gl.DEPTH_TEST );
 
   cube = new Cube();
