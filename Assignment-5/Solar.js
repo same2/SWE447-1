@@ -215,6 +215,8 @@ function render() {
   gl.uniform4fv(planet.uniforms.color, flatten(data.color));
   planet.render();
   ms.pop();
+   
+  window.requestAnimationFrame(render);
 
   // Mars
 
@@ -330,7 +332,6 @@ function render() {
   planet.render();
   ms.pop();
 
-  window.requestAnimationFrame(render);
 }
 
 //---------------------------------------------------------------------------
