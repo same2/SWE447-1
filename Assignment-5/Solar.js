@@ -17,7 +17,7 @@ var gl;
 // around the Sun. 
 
 var Planets = {
-  Sun : undefined,
+   Sun : undefined,
    Mercury : undefined,
    Venus : undefined,
    Earth : undefined,
@@ -143,10 +143,7 @@ function render() {
   planet.render();
   ms.pop();
 
-  //
   // Earth
-  //
-  
   
   name = "Earth";
   planet = Planets[name];
@@ -167,10 +164,8 @@ function render() {
   gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
   gl.uniform4fv(planet.uniforms.color, flatten(data.color));
   planet.render();
-  
-  //
+
   // Moon
-  //
   
   name = "Moon";
   planet = Planets[name];
@@ -192,9 +187,7 @@ function render() {
   
   window.requestAnimationFrame(render);
   
-  //
   //  Mercury
-  //
   
   name = "Mercury";
   planet = Planets[name];
@@ -214,9 +207,8 @@ function render() {
   planet.render();
   ms.pop();
   
-  //
+
   //  Venus
-  //
   
   name = "Venus";
   planet = Planets[name];
@@ -236,9 +228,8 @@ function render() {
   planet.render();
   ms.pop();
   
-  //
+
   //  Mars
-  //
   
   name = "Mars";
   planet = Planets[name];
@@ -258,9 +249,8 @@ function render() {
   planet.render();
   ms.pop();
   
-  //
+
   //  Jupiter
-  //
   
   name = "Jupiter";
   planet = Planets[name];
@@ -280,9 +270,8 @@ function render() {
   planet.render();
   ms.pop();
   
-  //
+
   //  Saturn
-  //
   
   name = "Saturn";
   planet = Planets[name];
@@ -302,9 +291,7 @@ function render() {
   planet.render();
   ms.pop();
   
-  //
   //  Uranus
-  //
   
   name = "Uranus";
   planet = Planets[name];
@@ -324,9 +311,7 @@ function render() {
   planet.render();
   ms.pop();
   
-  //
   //  Neptune
-  //
   
   name = "Neptune";
   planet = Planets[name];
@@ -346,10 +331,8 @@ function render() {
   planet.render();
   ms.pop();
   
-  //
   //  Pluto
-  //
-  
+
   name = "Pluto";
   planet = Planets[name];
   data = SolarSystem[name];
@@ -381,7 +364,7 @@ function resize() {
 
   gl.viewport(0, 0, w, h);
 
-  var fovy = 160.0; // degrees
+  var fovy = 120.0; // degrees
   var aspect = w / h;
 
   P = perspective(fovy, aspect, near, far);
