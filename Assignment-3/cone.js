@@ -25,7 +25,8 @@ var state = {
     },
 };
 function init() {
-    var canvas = document.getElementById( "webgl-canvas" );
+    state.canvas = document.getElementById( "webgl-canvas" );
+    
     gl = WebGLUtils.setupWebGL( canvas );
 
     if ( !gl ) {
