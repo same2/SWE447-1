@@ -38,6 +38,7 @@ function init() {
     initCallbacks();
     cone = new Cone(gl);
     render();
+    animate()
 }
 
 function render() {
@@ -96,4 +97,70 @@ function mousemove(event) {
     state.ui.mouse.lastY = y;
 }
 
+function animate() {
+      state.animation.tick = function() {
+        updateState();
+        draw();
+        requestAnimationFrame(state.animation.tick);
+    };
+      state.animation.tick();
+}
+
+function updateState() {
+      var speed = 0.2;
+      if (state.ui.pressedKeys[37]) {
+      // left
+        state.app.eye.x += speed;
+    } else if (state.ui.pressedKeys[39]) {
+      // right
+        state.app.eye.x -= speed;
+    } else if (state.ui.pressedKeys[40]) {
+      // down
+        state.app.eye.y += speed;
+    } else if (state.ui.pressedKeys[38]) {
+      // up
+        state.app.eye.y -= speed;
+    }
+}
+
+function draw(args) {
+    var v = (args && args.v) ? args.v : DEFAULT_VERT;
+    var vi = (args && args.vi) ? args.vi : DEFAULT_INDICES;
+    var uMVPMatrix = state.gl.getUniformLocation(state.program, 'uMVPMatrix');
+    var n = initVertexBuffers(v, vi).indices.length;
+    var mvm = mat4.create();
+    var pm = mat4.create();
+    var mvp = mat4.create();
+
+    mat4.perspective(pm,
+                 20, 1/1, 1, 100
+                );
+    mat4.lookAt(mvm,
+            vec3.fromValues(state.app.eye.x,state.app.eye.y,state.app.eye.z),
+            vec3.fromValues(0,0,0),
+            vec3.fromValues(0,1,0)
+           );
+    mat4.copy(mvp, pm);
+    mat4.multiply(mvp, mvp, mvm);
+    mat4.rotateX(mvp, mvp, state.app.angle.x);
+    mat4.rotateY(mvp, mvp, state.app.angle.y);
+
+    state.gl.useProgram(state.program);
+    state.gl.clear(state.gl.COLOR_BUFFER_BIT | state.gl.DEPTH_BUFFER_BIT);
+    state.gl.uniformMatrix4fv(uMVPMatrix, false, mvp);
+    state.gl.drawElements(state.gl.TRIANGLES, n, state.gl.UNSIGNED_BYTE, 0);
+}
+
+function initVertexBuffers(v, i) {
+      var vertices = new Float32Array(v);
+      vertices.stride = 8;
+      vertices.attributes = [
+        {name:'aPosition', size:3, offset:0},
+        {name:'aColor',    size:3, offset:4},
+    ];
+      vertices.n = vertices.length/vertices.stride;
+      vertices.indices = i;
+      state.program.renderBuffers(vertices, i);
+      return vertices;
+}
 window.onload = init;
