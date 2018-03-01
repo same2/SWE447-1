@@ -25,13 +25,9 @@ var state = {
     },
 };
 
-
-
-
-
 function init() {
     state.canvas = document.getElementById( "webgl-canvas" );
-    gl = WebGLUtils.setupWebGL( canvas );
+    gl = WebGLUtils.setupWebGL( state.canvas );
 
     if ( !gl ) {
         alert("Unable to setup WebGL");
