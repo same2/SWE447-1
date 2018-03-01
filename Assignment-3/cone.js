@@ -1,6 +1,29 @@
 var gl = null;
 var cone = null;
-
+var state = {
+    gl: null,
+    program: null,
+    ui: {
+        dragging: false,
+        mouse: {
+          lastX: -1,
+          lastY: -1,
+      },
+        pressedKeys: {},
+    },
+    animation: {},
+    app: {
+        angle: {
+          x: 0,
+          y: 0,
+      },
+        eye: {
+          x:2.,
+          y:2.,
+          z:7.,
+      },
+    },
+};
 function init() {
     var canvas = document.getElementById( "webgl-canvas" );
     gl = WebGLUtils.setupWebGL( canvas );
@@ -11,7 +34,7 @@ function init() {
     }
     
     gl.clearColor( 0.0, 1.0, 0.0, 1.0 );
-    
+    initCallbacks();
     cone = new Cone(gl);
     render();
 }
@@ -19,6 +42,14 @@ function init() {
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
     cone.render();
+}
+
+function initCallbacks() {
+    document.onkeydown = keydown;
+    document.onkeyup = keyup;
+    state.canvas.onmousedown = mousedown;
+    state.canvas.onmouseup = mouseup;
+    state.canvas.onmousemove = mousemove;
 }
 
 function keydown(event) {
@@ -64,5 +95,6 @@ function mousemove(event) {
     state.ui.mouse.lastY = y;
   }
 })(window || this);
+
 
 window.onload = init;
