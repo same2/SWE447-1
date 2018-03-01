@@ -11,7 +11,6 @@ function init() {
     }
     
     gl.clearColor( 0.0, 1.0, 0.0, 1.0 );
-    initCallbacks();
     cone = new Cone(gl);
     render();
 }
