@@ -24,9 +24,13 @@ var state = {
       },
     },
 };
+
+
+
+
+
 function init() {
     state.canvas = document.getElementById( "webgl-canvas" );
-    
     gl = WebGLUtils.setupWebGL( canvas );
 
     if ( !gl ) {
